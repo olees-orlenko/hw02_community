@@ -2,8 +2,8 @@ from django.contrib import admin
 
 from .models import Group, Post
 
+
 class PostAdmin(admin.ModelAdmin):
-    # Перечисляем поля, которые должны отображаться в админке
     list_display = (
         'pk',
         'text',
@@ -16,7 +16,16 @@ class PostAdmin(admin.ModelAdmin):
     list_filter = ('pub_date',)
     empty_value_display = '-пусто-'
 
-# При регистрации модели Post источником конфигурации для неё назначаем
-# класс PostAdmin
+
+class GroupAdmin(admin.ModelAdmin):
+    list_display = (
+        'pk',
+        'text',
+    )
+    search_fields = ('text',)
+    empty_value_display = '-пусто-'
+    prepopulated_fields = {"slug": ("title",)}
+
+
 admin.site.register(Group)
 admin.site.register(Post, PostAdmin)

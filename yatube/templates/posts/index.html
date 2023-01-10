@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}
-  {{ title }}
+  Последние обновления на сайте
 {% endblock %}
 {% block content %}
-  <div class="container">        
-    <h1>{{ text }}</h1>  
+  <div class="container py-5">        
+    <h1>Последние обновления на сайте</h1>
       {% for post in posts %}
         <ul>
           <li>
@@ -15,7 +15,7 @@
             Дата публикации: {{ post.pub_date|date:"d E Y" }}
           </li>
         </ul>
-        <p>{{ post.text }}</p>    
+        {{ post.text|linebreaks }}
         {% if post.group %}
           <a href="{% url 'posts:group_list' post.group.slug %}">все записи группы</a>
         {% endif %}
