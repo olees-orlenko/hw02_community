@@ -6,7 +6,7 @@
 {% block content %}
   <div class="container py-5">
     <h1>{{ group.title }}</h1>
-    {{ group.description|linebreaks }}
+    <p>{{ group.description|linebreaks }}</p>
     {% for post in posts %}
       <ul>
         <li>
